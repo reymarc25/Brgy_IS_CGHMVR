@@ -12,6 +12,24 @@ use App\Http\Controllers\PurokController;
 use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/favicon.png', function () {
+    $path = public_path('favicon.png');
+    abort_unless(file_exists($path), 404);
+    return response()->file($path);
+});
+
+Route::get('/images/{path}', function (string $path) {
+    $fullPath = public_path('images/'.$path);
+    abort_unless(file_exists($fullPath), 404);
+    return response()->file($fullPath);
+})->where('path', '.*');
+
+Route::get('/build/assets/{path}', function (string $path) {
+    $fullPath = public_path('build/assets/'.$path);
+    abort_unless(file_exists($fullPath), 404);
+    return response()->file($fullPath);
+})->where('path', '.*');
+
 Route::get('/', function () {
     return auth()->check()
         ? redirect()->route('admin.dashboard')
