@@ -6,16 +6,7 @@
     <title>@yield('title', 'Barangay Management System')</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}?v=1">
-    @php
-        $builtCss = collect(glob(public_path('build/assets/app*.css')))->map(fn ($f) => basename($f))->first();
-        $builtJs = collect(glob(public_path('build/assets/app*.js')))->map(fn ($f) => basename($f))->first();
-    @endphp
-    @if ($builtCss)
-        <link rel="stylesheet" href="{{ asset('build/assets/'.$builtCss) }}">
-    @endif
-    @if ($builtJs)
-        <script type="module" src="{{ asset('build/assets/'.$builtJs) }}"></script>
-    @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen text-slate-900 antialiased">
     <div class="print:hidden">
