@@ -1,5 +1,21 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "public/build"
+  "builds": [
+    {
+      "src": "public/index.php",
+      "use": "vercel-php@0.7.3"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1",
+      "check": true
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.php"
+    }
+  ]
 }
