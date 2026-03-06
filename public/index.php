@@ -5,6 +5,20 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+if (getenv('VERCEL')) {
+    $cacheRoot = '/tmp/bootstrap/cache';
+
+    if (! is_dir($cacheRoot)) {
+        @mkdir($cacheRoot, 0777, true);
+    }
+
+    putenv("APP_SERVICES_CACHE={$cacheRoot}/services.php");
+    putenv("APP_PACKAGES_CACHE={$cacheRoot}/packages.php");
+    putenv("APP_CONFIG_CACHE={$cacheRoot}/config.php");
+    putenv("APP_ROUTES_CACHE={$cacheRoot}/routes-v7.php");
+    putenv("APP_EVENTS_CACHE={$cacheRoot}/events.php");
+}
+
 // Determine if the application is in maintenance mode...
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
