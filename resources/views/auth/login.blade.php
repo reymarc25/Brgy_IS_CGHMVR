@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Barangay Management System</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (file_exists(public_path('build/manifest.json')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 <body class="relative min-h-screen bg-cover bg-center bg-no-repeat antialiased" style="background-image: url('{{ asset('images/login_bg.png') }}');">
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-900/55 via-slate-900/45 to-blue-900/35"></div>

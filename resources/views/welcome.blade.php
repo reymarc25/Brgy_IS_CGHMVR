@@ -6,7 +6,9 @@
     <title>Barangay Management System</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}?v=1">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (file_exists(public_path('build/manifest.json')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 <body class="antialiased overflow-x-hidden">
 
