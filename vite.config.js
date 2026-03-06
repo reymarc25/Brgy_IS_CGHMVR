@@ -15,4 +15,20 @@ export default defineConfig({
             ignored: ['**/storage/framework/views/**'],
         },
     },
+    build: {
+        manifest: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: ({ name }) => {
+                    if (name === 'app.css') {
+                        return 'assets/app.css';
+                    }
+
+                    return 'assets/[name][extname]';
+                },
+            },
+        },
+    },
 });

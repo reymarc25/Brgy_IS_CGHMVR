@@ -7,6 +7,9 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+        <script type="module" src="{{ asset('build/assets/app.js') }}"></script>
     @endif
 </head>
 <body class="relative min-h-screen bg-cover bg-center bg-no-repeat antialiased" style="background-image: url('{{ asset('images/login_bg.png') }}');">
