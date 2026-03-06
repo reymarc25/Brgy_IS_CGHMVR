@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "composer install --no-dev --prefer-dist --optimize-autoloader && npm run build",
+  "buildCommand": "composer install --no-dev --prefer-dist --optimize-autoloader && php artisan package:discover --ansi && npm run build",
   "builds": [
     {
       "src": "public/index.php",
