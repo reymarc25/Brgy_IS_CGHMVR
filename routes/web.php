@@ -27,7 +27,19 @@ Route::get('/images/{path}', function (string $path) {
 Route::get('/build/assets/{path}', function (string $path) {
     $fullPath = public_path('build/assets/'.$path);
     abort_unless(file_exists($fullPath), 404);
-    return response()->file($fullPath);
+
+    $extension = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
+    $mimeType = match ($extension) {
+        'css' => 'text/css; charset=UTF-8',
+        'js', 'mjs' => 'application/javascript; charset=UTF-8',
+        'json', 'map' => 'application/json; charset=UTF-8',
+        default => mime_content_type($fullPath) ?: 'application/octet-stream',
+    };
+
+    return response()->file($fullPath, [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=31536000, immutable',
+    ]);
 })->where('path', '.*');
 
 Route::get('/', function () {
