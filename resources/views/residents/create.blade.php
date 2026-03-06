@@ -1,78 +1,30 @@
 @extends('layouts.app')
+
 @section('title', 'Add Resident')
+
 @section('content')
-<div class="mb-6">
-    <a href="{{ route('residents.index') }}" class="text-blue-600 hover:text-blue-800">&larr; Back to List</a>
-    <h1 class="text-2xl font-bold mt-2">Add New Resident</h1>
-</div>
-
-<div class="bg-white rounded-lg shadow p-6">
-    <form action="{{ route('residents.store') }}" method="POST">
-        @csrf
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="space-y-6">
+    <section class="surface-card p-5 sm:p-6">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                @error('first_name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                <p class="section-kicker">Resident Registry</p>
+                <h1 class="page-title mt-2">Create Resident Profile</h1>
+                <p class="mt-2 text-sm text-slate-600">Fill out all required fields to register a new resident.</p>
             </div>
-             <div>
-                <label for="middle_name" class="block text-sm font-medium text-gray-700 mb-1">Middle Name</label>
-                <input type="text" name="middle_name" id="middle_name" value="{{ old('middle_name') }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                @error('middle_name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-             <div>
-                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                @error('last_name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
+            <a href="{{ route('residents.index') }}" class="btn-muted">Back to List</a>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div>
-                <label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">Birthdate</label>
-                <input type="date" name="birthdate" id="birthdate" value="{{ old('birthdate') }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                @error('birthdate') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-            <div>
-                <label for="contact_number" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
-                <input type="text" name="contact_number" id="contact_number" value="{{ old('contact_number') }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                @error('contact_number') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-        </div>
+    <section class="surface-card p-5 sm:p-6">
+        <form action="{{ route('residents.store') }}" method="POST">
+            @csrf
+            @include('residents._form')
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-             <div>
-                <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
-                <select name="gender" id="gender" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                    <option value="">Select Gender</option>
-                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                </select>
-                @error('gender') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            <div class="mt-6 flex flex-wrap justify-end gap-2 border-t border-slate-100 pt-5">
+                <a href="{{ route('residents.index') }}" class="btn-muted">Cancel</a>
+                <button type="submit" class="btn-primary">Save Resident</button>
             </div>
-             <div>
-                <label for="civil_status" class="block text-sm font-medium text-gray-700 mb-1">Civil Status</label>
-                <select name="civil_status" id="civil_status" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
-                    <option value="">Select Status</option>
-                    <option value="Single" {{ old('civil_status') == 'Single' ? 'selected' : '' }}>Single</option>
-                    <option value="Married" {{ old('civil_status') == 'Married' ? 'selected' : '' }}>Married</option>
-                    <option value="Widowed" {{ old('civil_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
-                    <option value="Separated" {{ old('civil_status') == 'Separated' ? 'selected' : '' }}>Separated</option>
-                </select>
-                @error('civil_status') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Full Address</label>
-            <textarea name="address" id="address" rows="3" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>{{ old('address') }}</textarea>
-            @error('address') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="flex justify-end">
-             <a href="{{ route('residents.index') }}" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2 hover:bg-gray-300">Cancel</a>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Save Resident</button>
-        </div>
-    </form>
+        </form>
+    </section>
 </div>
 @endsection

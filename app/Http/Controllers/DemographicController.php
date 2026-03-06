@@ -2,63 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Resident;
+use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 
 class DemographicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        return view('demographic.index');
-    }
+        $total = Resident::count();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $genderBreakdown = Resident::query()
+            ->select('gender', DB::raw('COUNT(*) as total'))
+            ->groupBy('gender')
+            ->orderByDesc('total')
+            ->get();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $civilStatusBreakdown = Resident::query()
+            ->select('civil_status', DB::raw('COUNT(*) as total'))
+            ->groupBy('civil_status')
+            ->orderByDesc('total')
+            ->get();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $ageGroups = collect([
+            ['label' => 'Children (0-14)', 'total' => Resident::whereDate('birthdate', '>=', Carbon::now()->subYears(14))->count()],
+            ['label' => 'Youth (15-30)', 'total' => Resident::whereBetween('birthdate', [Carbon::now()->subYears(30), Carbon::now()->subYears(15)])->count()],
+            ['label' => 'Adults (31-59)', 'total' => Resident::whereBetween('birthdate', [Carbon::now()->subYears(59), Carbon::now()->subYears(31)])->count()],
+            ['label' => 'Senior (60+)', 'total' => Resident::whereDate('birthdate', '<=', Carbon::now()->subYears(60))->count()],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        $registrations = collect(range(0, 5))
+            ->map(function (int $offset) {
+                $month = now()->startOfMonth()->subMonths(5 - $offset);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+                return [
+                    'label' => $month->format('M Y'),
+                    'total' => Resident::whereYear('created_at', $month->year)
+                        ->whereMonth('created_at', $month->month)
+                        ->count(),
+                ];
+            });
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $voterCount = Resident::where('is_voter', true)->count();
+        $nonVoterCount = max($total - $voterCount, 0);
+
+        $householdMap = Resident::query()
+            ->selectRaw("COALESCE(NULLIF(household_code, ''), address) as household_key, COUNT(*) as total_members")
+            ->groupBy('household_key')
+            ->orderByDesc('total_members')
+            ->limit(10)
+            ->get();
+
+        return view('demographic.index', [
+            'totalResidents' => $total,
+            'genderBreakdown' => $genderBreakdown,
+            'civilStatusBreakdown' => $civilStatusBreakdown,
+            'ageGroups' => $ageGroups,
+            'registrations' => $registrations,
+            'voterCount' => $voterCount,
+            'nonVoterCount' => $nonVoterCount,
+            'householdMap' => $householdMap,
+        ]);
     }
 }

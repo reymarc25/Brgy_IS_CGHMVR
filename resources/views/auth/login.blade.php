@@ -3,81 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login | Barangay Information System</title>
-    
+    <title>Login | Barangay Management System</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
-    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}?v=1">
-    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#f8fafc] min-h-screen flex items-center justify-center p-6 antialiased">
+<body class="relative min-h-screen bg-cover bg-center bg-no-repeat antialiased" style="background-image: url('{{ asset('images/login_bg.png') }}');">
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-900/55 via-slate-900/45 to-blue-900/35"></div>
 
-    <div class="w-full max-w-xl">
-        
-        <div class="flex items-center justify-center gap-5 mb-12">
-            <img src="{{ asset('favicon.png') }}?v=1" alt="Logo" class="w-16 h-16 object-contain">
-            <div class="flex flex-col">
-                <h1 class="text-4xl font-black text-slate-900 tracking-tight leading-none">
-                    Barangay <span class="text-blue-600">IS</span>
-                </h1>
-                <p class="text-slate-400 text-xs font-bold uppercase tracking-[0.3em] mt-1.5 ml-0.5">
-                    Information System
-                </p>
-            </div>
-        </div>
+    <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
+    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 32px 80px -12px rgba(0,0,0,0.55)">
 
-        <div class="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 p-10 sm:p-14">
-            
-            <div class="mb-10 text-center sm:text-left">
-                <h2 class="text-2xl font-bold text-slate-800">Administrator Login</h2>
-                <p class="text-slate-500 mt-2 font-medium">Please enter your credentials to access the portal.</p>
-            </div>
+        {{-- Left Branding Panel --}}
+        <div class="relative hidden overflow-hidden bg-gradient-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+            {{-- Background decoration --}}
+            <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/5"></div>
+            <div class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-teal-500/20"></div>
+            <div class="pointer-events-none absolute top-1/2 right-0 h-32 w-32 -translate-y-1/2 rounded-full bg-orange-400/10"></div>
 
-            <form id="login-form" action="{{ route('login') }}" method="POST" class="space-y-7">
-                @csrf
-                
-                <div class="space-y-2">
-                    <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-2">Email Address</label>
-                    <input type="email" name="email" value="{{ old('email') }}" required
-                        class="w-full px-6 py-5 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 focus:bg-white outline-none transition-all text-lg text-slate-700 placeholder-slate-300 shadow-sm"
-                        placeholder="admin@barangay.gov" autofocus>
-                    @error('email')
-                        <p class="text-xs text-red-500 font-bold mt-2 ml-2">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="space-y-2">
-                    <div class="flex justify-between items-center px-2">
-                        <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest">Password</label>
-                        <a href="#" class="text-xs font-bold text-blue-600 hover:text-blue-700 transition">Forgot password?</a>
+            {{-- Top branding --}}
+            <div class="relative">
+                <div class="flex items-center gap-3">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 ring-2 ring-white/30">
+                        <img src="{{ asset('favicon.png') }}" alt="BMS Logo" class="h-9 w-9 rounded-xl object-cover">
                     </div>
-                    <input type="password" name="password" required
-                        class="w-full px-6 py-5 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 focus:bg-white outline-none transition-all text-lg text-slate-700 placeholder-slate-300 shadow-sm"
-                        placeholder="Password">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-200">Republic of the Philippines</p>
+                        <p class="text-sm font-extrabold text-white">Barangay Management System</p>
+                    </div>
                 </div>
 
-                <div class="flex items-center px-2">
-                    <label class="flex items-center cursor-pointer group">
-                        <input type="checkbox" name="remember" class="w-5 h-5 rounded-lg border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer transition">
-                        <span class="ml-3 text-sm font-semibold text-slate-500 group-hover:text-slate-700 transition">Keep me signed in</span>
-                    </label>
-                </div>
+                <h1 class="mt-10 text-4xl font-black leading-tight">Serving the<br><span class="text-teal-200">Community</span><br>Digitally.</h1>
+                <p class="mt-4 text-sm font-medium leading-relaxed text-teal-100/80">Fast resident profiling, demographic reports, and secure barangay records all in one place.</p>
+            </div>
 
-                <button type="submit" 
-                    class="w-full py-5 bg-slate-900 hover:bg-blue-600 text-white font-extrabold text-lg rounded-2xl shadow-xl shadow-slate-200 transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-3 group">
-                    <span>Sign In</span>
-                   
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </button>
-            </form>
+            {{-- Features list --}}
+            <div class="relative space-y-3 text-sm">
+                <div class="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-sm">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-teal-400/30">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    Live dashboard with resident statistics
+                </div>
+                <div class="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-sm">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-teal-400/30">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    Searchable and editable resident records
+                </div>
+                <div class="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-sm">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-teal-400/30">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    Role-based access via secure login
+                </div>
+            </div>
         </div>
 
-        <div class="mt-12 text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.5em]">
-            Official Barangay Digital Portal &bull; 2026
+        {{-- Right Login Panel --}}
+        <div class="flex items-center bg-white/95 p-8 backdrop-blur sm:p-12">
+            <div class="w-full">
+                {{-- Mobile logo --}}
+                <div class="mb-8 flex items-center gap-3 lg:hidden">
+                    <img src="{{ asset('favicon.png') }}" alt="Logo" class="h-10 w-10 rounded-xl object-cover">
+                    <div>
+                        <p class="text-xs font-bold text-teal-600 uppercase tracking-widest">BMS</p>
+                        <p class="text-sm font-extrabold text-slate-800">Barangay Management System</p>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <p class="text-xs font-extrabold uppercase tracking-[0.28em] text-teal-600">Secure Portal</p>
+                    <h2 class="mt-2 text-3xl font-extrabold text-slate-900">Admin Login</h2>
+                    <p class="mt-2 text-sm text-slate-500">Use your barangay account to continue.</p>
+                </div>
+
+                @if (session('success'))
+                    <div class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <form id="login-form" action="{{ route('login.authenticate') }}" method="POST" class="space-y-5">
+                    @csrf
+                    <div>
+                        <label for="email" class="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Email Address</label>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-400 focus:ring-2 focus:ring-teal-100">
+                        @error('email')
+                            <p class="mt-1 text-xs font-semibold text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="password" class="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Password</label>
+                        <input id="password" type="password" name="password" required class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-teal-400 focus:ring-2 focus:ring-teal-100">
+                    </div>
+
+                    <label class="flex items-center gap-2 text-sm font-medium text-slate-600">
+                        <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500">
+                        Keep me signed in
+                    </label>
+
+                    <button type="submit" class="w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white transition hover:bg-teal-700">
+                        <span data-label>Sign In</span>
+                    </button>
+                </form>
+
+                <p class="mt-8 text-xs text-slate-500">Default admin: <strong>admin@barangay.gov</strong> / <strong>admin1234</strong></p>
+
+                <div class="mt-6 border-t border-slate-100 pt-6">
+                    <a href="{{ url('/') }}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 transition hover:text-teal-600">
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to homepage
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-
-    <script src="{{ asset('js/login-handler.js') }}"></script>
+    </div>
 </body>
 </html>

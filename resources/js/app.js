@@ -1,37 +1,60 @@
 import './bootstrap';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Login form handling
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         const submitBtn = loginForm.querySelector('button[type="submit"]');
-        const btnText = submitBtn.querySelector('span');
+        const btnText = submitBtn?.querySelector('[data-label]');
 
         loginForm.addEventListener('submit', () => {
-            btnText.textContent = 'Verifying Credentials...';
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+            if (btnText) {
+                btnText.textContent = 'Signing in...';
+            }
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            }
         });
     }
 
-    // User menu dropdown handling
-    window.toggleUserMenu = function() {
-        const dropdown = document.getElementById('user-dropdown');
-        if (dropdown) dropdown.classList.toggle('hidden');
-    }
+    const userMenu = document.getElementById('user-menu');
+    const userDropdown = document.getElementById('user-dropdown');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarArrowIcon = document.getElementById('sidebar-arrow-icon');
 
-    document.addEventListener('click', (e) => {
-        const menu = document.getElementById('user-menu');
-        const dropdown = document.getElementById('user-dropdown');
-        const button = menu ? menu.querySelector('button') : null;
-        
-        // Prevent closing if clicking the button itself (which triggers the toggle)
-        if (button && button.contains(e.target)) {
+    const syncArrow = () => {
+        const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+        if (sidebarArrowIcon) {
+            sidebarArrowIcon.style.transform = isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    };
+
+    window.toggleUserMenu = () => userDropdown?.classList.toggle('hidden');
+
+    window.toggleSidebar = () => {
+        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+        if (isDesktop) {
+            document.body.classList.toggle('sidebar-collapsed');
+            sidebarBackdrop?.classList.add('hidden');
+            syncArrow();
             return;
         }
 
-        if (menu && dropdown && !menu.contains(e.target)) {
-            dropdown.classList.add('hidden');
+        sidebar?.classList.toggle('-translate-x-full');
+        sidebarBackdrop?.classList.toggle('hidden');
+    };
+
+    document.addEventListener('click', (e) => {
+        if (userMenu && userDropdown && !userMenu.contains(e.target)) {
+            userDropdown.classList.add('hidden');
         }
     });
+
+    sidebarBackdrop?.addEventListener('click', () => {
+        sidebar?.classList.add('-translate-x-full');
+        sidebarBackdrop?.classList.add('hidden');
+    });
+
+    syncArrow();
 });

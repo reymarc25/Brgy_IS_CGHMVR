@@ -1,52 +1,90 @@
 @extends('layouts.app')
-@section('title', 'Resident Details')
-@section('content')
-<div class="mb-6 flex justify-between items-center">
-    <div>
-        <a href="{{ route('residents.index') }}" class="text-blue-600 hover:text-blue-800">&larr; Back to List</a>
-        <h1 class="text-2xl font-bold mt-2">Resident Details</h1>
-    </div>
-    <div>
-        <a href="{{ route('residents.edit', $resident) }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 mr-2">Edit</a>
-        <form action="{{ route('residents.destroy', $resident) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this resident?');">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Delete</button>
-        </form>
-    </div>
-</div>
 
-<div class="bg-white rounded-lg shadow overflow-hidden">
-    <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-medium text-gray-900">Personal Information</h3>
-    </div>
-    <div class="px-6 py-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
+@section('title', 'Resident Details')
+
+@section('content')
+<div class="space-y-6">
+    <section class="surface-card p-5 sm:p-6">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
-                <dt class="text-sm font-medium text-gray-500">Full Name</dt>
-                <dd class="mt-1 text-sm text-gray-900 font-semibold">{{ $resident->first_name }} {{ $resident->middle_name }} {{ $resident->last_name }}</dd>
+                <p class="section-kicker">Resident Profile</p>
+                <h1 class="page-title mt-2">{{ $resident->full_name }}</h1>
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="data-pill">{{ $resident->gender }}</span>
+                    <span class="data-pill">{{ $resident->civil_status }}</span>
+                    <span class="data-pill">{{ $resident->age }} years old</span>
+                </div>
             </div>
-            <div>
-                <dt class="text-sm font-medium text-gray-500">Address</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ $resident->address }}</dd>
-            </div>
-             <div>
-                <dt class="text-sm font-medium text-gray-500">Birthdate</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ \Carbon\Carbon::parse($resident->birthdate)->format('F d, Y') }} ({{ \Carbon\Carbon::parse($resident->birthdate)->age }} years old)</dd>
-            </div>
-             <div>
-                <dt class="text-sm font-medium text-gray-500">Gender</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ $resident->gender }}</dd>
-            </div>
-             <div>
-                <dt class="text-sm font-medium text-gray-500">Civil Status</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ $resident->civil_status }}</dd>
-            </div>
-             <div>
-                <dt class="text-sm font-medium text-gray-500">Contact Number</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ $resident->contact_number ?? 'N/A' }}</dd>
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ route('residents.index') }}" class="btn-muted">Back to List</a>
+                <a href="{{ route('residents.edit', $resident) }}" class="btn-primary">Edit Profile</a>
+                @if (auth()->user()?->isAdmin())
+                    <form action="{{ route('residents.destroy', $resident) }}" method="POST" onsubmit="return confirm('Delete this resident record?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                @endif
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="surface-card overflow-hidden">
+        <div class="grid grid-cols-1 divide-y divide-slate-100 md:grid-cols-2 md:divide-x md:divide-y-0">
+            <div class="space-y-5 p-5 sm:p-6">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">First Name</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->first_name }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Middle Name</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->middle_name ?: 'N/A' }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Last Name</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->last_name }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Birthdate</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->birthdate->format('F d, Y') }}</p>
+                </div>
+            </div>
+            <div class="space-y-5 p-5 sm:p-6">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Contact Number</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->contact_number ?: 'N/A' }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Gender</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->gender }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Civil Status</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->civil_status }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Address</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->address }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Household ID</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{{ $resident->household_code ?: 'N/A' }}</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Special Sectors</p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">
+                        @php
+                            $tags = [];
+                            if ($resident->is_pwd) $tags[] = 'PWD';
+                            if ($resident->is_solo_parent) $tags[] = 'Solo Parent';
+                            if ($resident->is_4ps) $tags[] = '4Ps';
+                            if ($resident->is_voter) $tags[] = 'Voter';
+                        @endphp
+                        {{ $tags ? implode(', ', $tags) : 'None' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 @endsection

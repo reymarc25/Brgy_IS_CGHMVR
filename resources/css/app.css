@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:wght@600;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +7,158 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+:root {
+    --brand: #ec4899;
+    --brand-dark: #db2777;
+    --accent: #2563eb;
+    --paper: #f7f7ff;
+}
+
+body {
+    background:
+        radial-gradient(circle at top right, rgb(59 130 246 / 0.16), transparent 36%),
+        radial-gradient(circle at 0 100%, rgb(236 72 153 / 0.15), transparent 32%),
+        var(--paper);
+}
+
+.glass-card {
+    @apply rounded-2xl border border-slate-200/70 bg-white/90 shadow-sm backdrop-blur;
+}
+
+.page-title {
+    font-family: 'Fraunces', serif;
+    @apply text-3xl font-bold tracking-tight text-slate-900;
+}
+
+.data-pill {
+    @apply rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-700;
+}
+
+.surface-card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+}
+
+.section-kicker {
+    @apply text-xs font-extrabold uppercase tracking-[0.2em] text-teal-600;
+}
+
+.form-label {
+    @apply mb-2 block text-xs font-bold uppercase tracking-[0.15em] text-slate-500;
+}
+
+.form-input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition;
+    @apply focus:border-teal-400 focus:ring-2 focus:ring-teal-100;
+}
+
+.btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-pink-500 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-pink-600;
+}
+
+.btn-muted {
+    @apply inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100;
+}
+
+.btn-danger {
+    @apply inline-flex items-center justify-center rounded-xl bg-red-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-red-700;
+}
+
+/* Theme overrides: force pink-blue palette across existing teal-based classes */
+.text-teal-600 {
+    color: #db2777 !important;
+}
+
+.text-teal-700 {
+    color: #be185d !important;
+}
+
+.bg-teal-500,
+.bg-teal-600 {
+    background-color: #ec4899 !important;
+}
+
+.hover\:bg-teal-700:hover {
+    background-color: #db2777 !important;
+}
+
+.focus\:border-teal-400:focus {
+    border-color: #60a5fa !important;
+}
+
+.focus\:ring-teal-100:focus {
+    --tw-ring-color: rgb(191 219 254 / 0.7) !important;
+}
+
+.focus\:ring-teal-500:focus {
+    --tw-ring-color: rgb(59 130 246 / 0.7) !important;
+}
+
+.from-teal-500 {
+    --tw-gradient-from: #ec4899 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(236 72 153 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.to-teal-600,
+.to-teal-700 {
+    --tw-gradient-to: #2563eb var(--tw-gradient-to-position) !important;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 10mm;
+}
+
+.print-a4 {
+    width: 100%;
+    max-width: 190mm;
+    min-height: 277mm;
+    margin: 0 auto;
+}
+
+@media print {
+    body {
+        background: #fff !important;
+    }
+
+    .print-a4 {
+        width: 190mm;
+        min-height: 277mm;
+        margin: 0 auto;
+        box-shadow: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    body.sidebar-collapsed #sidebar {
+        width: 5.75rem !important;
+        transform: translateX(0) !important;
+    }
+
+    body.sidebar-collapsed #app-shell {
+        padding-left: 5.75rem !important;
+    }
+
+    body.sidebar-collapsed .brand-text,
+    body.sidebar-collapsed .nav-label,
+    body.sidebar-collapsed .nav-section-title {
+        display: none !important;
+    }
+
+    body.sidebar-collapsed .nav-item {
+        justify-content: center !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    body.sidebar-collapsed #sidebar-arrow-toggle {
+        left: 5.25rem !important;
+    }
+
+    #sidebar-arrow-toggle {
+        left: 17.25rem;
+    }
 }
