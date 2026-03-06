@@ -36,9 +36,10 @@ Route::get('/build/assets/{path}', function (string $path) {
         default => mime_content_type($fullPath) ?: 'application/octet-stream',
     };
 
-    return response()->file($fullPath, [
+    return response(file_get_contents($fullPath), 200, [
         'Content-Type' => $mimeType,
         'Cache-Control' => 'public, max-age=31536000, immutable',
+        'Content-Length' => (string) filesize($fullPath),
     ]);
 })->where('path', '.*');
 
