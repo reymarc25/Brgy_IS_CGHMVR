@@ -38,7 +38,8 @@ Route::get('/build/assets/{path}', function (string $path) {
 
     return response(file_get_contents($fullPath), 200, [
         'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=31536000, immutable',
+        // app.css/app2.js use stable filenames, so force revalidation to avoid stale UI.
+        'Cache-Control' => 'public, max-age=0, must-revalidate',
         'Content-Length' => (string) filesize($fullPath),
     ]);
 })->where('path', '.*');
