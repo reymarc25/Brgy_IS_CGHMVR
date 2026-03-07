@@ -7,11 +7,14 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="relative min-h-screen bg-cover bg-center bg-no-repeat antialiased" style="background-image: url('{{ asset('images/login_bg.png') }}');">
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-900/55 via-slate-900/45 to-blue-900/35"></div>
+<body class="relative min-h-screen overflow-hidden bg-slate-950 antialiased">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(244,114,182,0.26),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(45,212,191,0.2),transparent_40%),radial-gradient(circle_at_60%_30%,rgba(59,130,246,0.24),transparent_50%),linear-gradient(140deg,#0b1220_0%,#112047_45%,#1d3a8a_100%)]"></div>
+    <div class="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:56px_56px]"></div>
+    <div class="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-pink-500/25 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-cyan-400/25 blur-3xl"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
-    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 32px 80px -12px rgba(0,0,0,0.55)">
+    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/30 bg-white/15 shadow-2xl backdrop-blur-md lg:grid-cols-2" style="box-shadow: 0 34px 100px -22px rgba(3, 7, 18, 0.8)">
 
         {{-- Left Branding Panel --}}
         <div class="relative hidden overflow-hidden bg-gradient-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
