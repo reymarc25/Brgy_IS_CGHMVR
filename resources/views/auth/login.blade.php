@@ -7,14 +7,14 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="relative min-h-screen overflow-hidden bg-slate-950 antialiased">
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(244,114,182,0.26),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(45,212,191,0.2),transparent_40%),radial-gradient(circle_at_60%_30%,rgba(59,130,246,0.24),transparent_50%),linear-gradient(140deg,#0b1220_0%,#112047_45%,#1d3a8a_100%)]"></div>
-    <div class="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:56px_56px]"></div>
-    <div class="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-pink-500/25 blur-3xl"></div>
-    <div class="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-cyan-400/25 blur-3xl"></div>
+<body class="relative min-h-screen overflow-hidden bg-slate-100 antialiased">
+    <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,#f4f4ff_0%,#eef1ff_45%,#ebf2ff_100%)]"></div>
+    <div class="pointer-events-none absolute -bottom-40 -left-32 h-[30rem] w-[34rem] rounded-full bg-pink-200/50 blur-3xl"></div>
+    <div class="pointer-events-none absolute -top-28 right-24 h-[20rem] w-[26rem] rounded-full bg-blue-200/45 blur-3xl"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.55),transparent_58%)]"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
-    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/30 bg-white/15 shadow-2xl backdrop-blur-md lg:grid-cols-2" style="box-shadow: 0 34px 100px -22px rgba(3, 7, 18, 0.8)">
+    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
 
         {{-- Left Branding Panel --}}
         <div class="relative hidden overflow-hidden bg-gradient-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
