@@ -24,6 +24,24 @@ body {
         var(--paper);
 }
 
+.login-page-bg {
+    background: linear-gradient(140deg, #f4f4ff 0%, #eef1ff 45%, #ebf2ff 100%);
+}
+
+.login-bg-layer-main {
+    background: radial-gradient(circle at 50% 45%, rgb(255 255 255 / 0.55), transparent 58%);
+}
+
+.login-bg-glow-left {
+    background: rgb(244 114 182 / 0.3);
+    filter: blur(64px);
+}
+
+.login-bg-glow-right {
+    background: rgb(147 197 253 / 0.32);
+    filter: blur(64px);
+}
+
 .glass-card {
     @apply rounded-2xl border border-slate-200/70 bg-white/90 shadow-sm backdrop-blur;
 }

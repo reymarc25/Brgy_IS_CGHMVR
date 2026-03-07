@@ -7,11 +7,10 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="relative min-h-screen overflow-hidden bg-slate-100 antialiased">
-    <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,#f4f4ff_0%,#eef1ff_45%,#ebf2ff_100%)]"></div>
-    <div class="pointer-events-none absolute -bottom-40 -left-32 h-[30rem] w-[34rem] rounded-full bg-pink-200/50 blur-3xl"></div>
-    <div class="pointer-events-none absolute -top-28 right-24 h-[20rem] w-[26rem] rounded-full bg-blue-200/45 blur-3xl"></div>
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.55),transparent_58%)]"></div>
+<body class="login-page-bg relative min-h-screen overflow-hidden antialiased">
+    <div class="login-bg-layer-main pointer-events-none absolute inset-0"></div>
+    <div class="login-bg-glow-left pointer-events-none absolute -bottom-40 -left-32 h-[30rem] w-[34rem] rounded-full"></div>
+    <div class="login-bg-glow-right pointer-events-none absolute -top-28 right-24 h-[20rem] w-[26rem] rounded-full"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
     <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
