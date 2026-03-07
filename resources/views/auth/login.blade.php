@@ -8,14 +8,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="relative min-h-screen overflow-hidden antialiased" style="background:
-    radial-gradient(980px circle at 14% 90%, rgba(236,72,153,0.34), transparent 45%),
-    radial-gradient(920px circle at 88% 10%, rgba(59,130,246,0.32), transparent 42%),
-    linear-gradient(135deg, #ffe9f5 0%, #eef2ff 48%, #dbeafe 100%);">
+    radial-gradient(1100px circle at 12% 92%, rgba(236,72,153,0.52), transparent 48%),
+    radial-gradient(1000px circle at 90% 8%, rgba(37,99,235,0.5), transparent 46%),
+    linear-gradient(135deg, #ffd8ef 0%, #e4e8ff 46%, #cfe3ff 100%);">
     <div class="pointer-events-none absolute inset-0" style="background:
-        radial-gradient(circle at 52% 44%, rgba(255,255,255,0.62), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.08));"></div>
-    <div class="pointer-events-none absolute -bottom-40 -left-32 h-[30rem] w-[34rem] rounded-full" style="background: rgba(236,72,153,0.34); filter: blur(74px);"></div>
-    <div class="pointer-events-none absolute -top-28 right-24 h-[20rem] w-[26rem] rounded-full" style="background: rgba(59,130,246,0.34); filter: blur(74px);"></div>
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.56), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.04));"></div>
+    <div class="pointer-events-none absolute -bottom-44 -left-40 h-[34rem] w-[40rem] rounded-full" style="background: rgba(236,72,153,0.42); filter: blur(84px);"></div>
+    <div class="pointer-events-none absolute -top-36 right-12 h-[26rem] w-[34rem] rounded-full" style="background: rgba(37,99,235,0.42); filter: blur(84px);"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
     <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
