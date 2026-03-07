@@ -16,9 +16,20 @@
         linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));"></div>
     <div class="pointer-events-none absolute -bottom-44 -left-40 h-[34rem] w-[40rem] rounded-full" style="background: rgba(236,72,153,0.42); filter: blur(92px);"></div>
     <div class="pointer-events-none absolute -top-36 right-12 h-[26rem] w-[34rem] rounded-full" style="background: rgba(37,99,235,0.42); filter: blur(92px);"></div>
+    <div class="pointer-events-none absolute left-[6%] top-[12%] h-24 w-24 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm"></div>
+    <div class="pointer-events-none absolute left-[11%] top-[35%] h-12 w-12 rounded-full border border-pink-200/35 bg-pink-300/20"></div>
+    <div class="pointer-events-none absolute left-[18%] bottom-[14%] h-20 w-20 rounded-full border border-white/20 bg-blue-200/15"></div>
+    <div class="pointer-events-none absolute right-[8%] top-[14%] h-28 w-28 rounded-full border border-blue-100/30 bg-blue-300/20"></div>
+    <div class="pointer-events-none absolute right-[14%] top-[46%] h-14 w-14 rounded-full border border-white/25 bg-white/10"></div>
+    <div class="pointer-events-none absolute right-[9%] bottom-[12%] h-24 w-24 rounded-full border border-pink-100/35 bg-pink-300/20"></div>
+    <div class="pointer-events-none absolute left-1/2 top-[8%] h-8 w-8 -translate-x-1/2 rounded-full bg-white/30"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
-    <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
+    <div class="relative grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
+        <div class="pointer-events-none absolute inset-0 z-10">
+            <div class="absolute -left-10 top-10 h-20 w-20 rounded-full border border-white/25 bg-white/10"></div>
+            <div class="absolute right-8 bottom-8 h-12 w-12 rounded-full border border-white/30 bg-blue-200/20"></div>
+        </div>
 
         {{-- Left Branding Panel --}}
         <div class="relative hidden overflow-hidden bg-gradient-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
