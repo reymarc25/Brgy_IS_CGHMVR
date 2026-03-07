@@ -16,7 +16,16 @@
     <div id="app-shell" class="min-h-screen lg:pl-72">
         <main class="w-full p-4 sm:p-6 lg:p-8 print:p-0">
             <div class="relative z-40 mb-4 flex items-center justify-between print:hidden">
-                <span></span>
+                <button
+                    type="button"
+                    onclick="toggleSidebar()"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 lg:hidden"
+                    aria-label="Toggle sidebar"
+                >
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
 
                 <div class="ml-auto flex items-center gap-3">
                     <button type="button" class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-700">

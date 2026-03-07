@@ -28,6 +28,16 @@
                 <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-pink-700">Barangay IS</p>
                 <h1 class="text-base font-extrabold leading-tight text-slate-900">Management System</h1>
             </div>
+            <button
+                type="button"
+                onclick="toggleSidebar()"
+                class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition hover:bg-slate-50 lg:hidden"
+                aria-label="Close sidebar"
+            >
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
     </div>
 
