@@ -15,15 +15,21 @@
     <div class="pointer-events-none absolute inset-0" style="background:
         linear-gradient(160deg, rgba(255,255,255,0.11), rgba(255,255,255,0.02)),
         radial-gradient(circle at 48% 38%, rgba(255,255,255,0.13), transparent 62%);"></div>
-    <div class="pointer-events-none absolute -bottom-44 -left-40 h-[34rem] w-[40rem] rounded-full" style="background: rgba(15,118,110,0.34); filter: blur(95px);"></div>
-    <div class="pointer-events-none absolute -top-36 right-10 h-[27rem] w-[35rem] rounded-full" style="background: rgba(37,99,235,0.38); filter: blur(95px);"></div>
-    <div class="pointer-events-none absolute left-[6%] top-[12%] h-24 w-24 rounded-full border border-white/25 bg-white/8 backdrop-blur-sm"></div>
-    <div class="pointer-events-none absolute left-[12%] top-[36%] h-12 w-12 rounded-full border border-cyan-200/35 bg-cyan-300/20"></div>
-    <div class="pointer-events-none absolute left-[18%] bottom-[14%] h-20 w-20 rounded-full border border-white/20 bg-blue-200/12"></div>
-    <div class="pointer-events-none absolute right-[8%] top-[14%] h-28 w-28 rounded-full border border-blue-100/28 bg-blue-300/16"></div>
-    <div class="pointer-events-none absolute right-[14%] top-[46%] h-14 w-14 rounded-full border border-white/20 bg-white/10"></div>
-    <div class="pointer-events-none absolute right-[9%] bottom-[12%] h-24 w-24 rounded-full border border-emerald-100/28 bg-emerald-300/18"></div>
-    <div class="pointer-events-none absolute left-1/2 top-[8%] h-8 w-8 -translate-x-1/2 rounded-full bg-white/26"></div>
+    <div class="pointer-events-none absolute -bottom-44 -left-40 h-136 w-160 rounded-full" style="background: rgba(15,118,110,0.34); filter: blur(95px);"></div>
+    <div class="pointer-events-none absolute -top-36 right-10 h-108 w-140 rounded-full" style="background: rgba(37,99,235,0.38); filter: blur(95px);"></div>
+    
+    {{-- Left side circles --}}
+    <div class="pointer-events-none absolute left-[5%] top-[15%] h-28 w-28 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm"></div>
+    <div class="pointer-events-none absolute left-[8%] top-[45%] h-16 w-16 rounded-full border border-cyan-200/40 bg-cyan-300/25"></div>
+    <div class="pointer-events-none absolute left-[12%] bottom-[18%] h-20 w-20 rounded-full border border-white/25 bg-blue-200/15"></div>
+    
+    {{-- Right side circles --}}
+    <div class="pointer-events-none absolute right-[6%] top-[12%] h-32 w-32 rounded-full border border-blue-100/35 bg-blue-300/20"></div>
+    <div class="pointer-events-none absolute right-[10%] top-[50%] h-16 w-16 rounded-full border border-white/25 bg-white/12"></div>
+    <div class="pointer-events-none absolute right-[7%] bottom-[15%] h-24 w-24 rounded-full border border-emerald-100/35 bg-emerald-300/22"></div>
+    
+    {{-- Top center accent --}}
+    <div class="pointer-events-none absolute left-1/2 top-[6%] h-12 w-12 -translate-x-1/2 rounded-full border border-white/30 bg-white/20"></div>
 
     <div class="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-8">
     <div class="relative grid w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-900/55 bg-white/60 shadow-2xl backdrop-blur-sm lg:grid-cols-2" style="box-shadow: 0 36px 80px -24px rgba(15, 23, 42, 0.45)">
@@ -33,7 +39,7 @@
         </div>
 
         {{-- Left Branding Panel --}}
-        <div class="relative hidden overflow-hidden bg-gradient-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+        <div class="relative hidden overflow-hidden bg-linear-to-br from-pink-600/85 via-blue-600/80 to-blue-900/85 p-10 text-white lg:flex lg:flex-col lg:justify-between">
             {{-- Background decoration --}}
             <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/5"></div>
             <div class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-teal-500/20"></div>
